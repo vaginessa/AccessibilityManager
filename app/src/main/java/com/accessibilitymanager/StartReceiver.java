@@ -12,8 +12,8 @@ public class StartReceiver extends BroadcastReceiver {
         SharedPreferences sharedPreferences = context.getSharedPreferences("data", 0);
         if (sharedPreferences.getBoolean("boot",true))
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                context.startForegroundService(new Intent(context, daemonService.class));
+                context.startForegroundService(new Intent(context, DaemonService.class));
             else
-                context.startService(new Intent(context, daemonService.class));
+                context.startService(new Intent(context, DaemonService.class));
     }
 }

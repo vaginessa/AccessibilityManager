@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".daemonService"
+            android:name=".DaemonService"
             android:exported="true" />
         <provider
             android:name="rikka.shizuku.ShizukuProvider"

@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-public class daemonService extends Service {
+public class DaemonService extends Service {
 
     private SettingsValueChangeContentObserver mContentOb;
     SharedPreferences sp;
@@ -86,7 +86,7 @@ public class daemonService extends Service {
             add.append(serviceName).append(":");
             add1.append(packageLabel).append("\n");
             if (sp.getBoolean("toast", true))
-                Toast.makeText(daemonService.this, "保活" + packageLabel, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DaemonService.this, "保活" + packageLabel, Toast.LENGTH_SHORT).show();
         }
         if (add.length() > 0) {
             tmpSettingValue = add + s;
@@ -110,7 +110,7 @@ public class daemonService extends Service {
             return;
         }
         packageManager = getPackageManager();
-        Toast.makeText(daemonService.this, "启动保活", Toast.LENGTH_SHORT).show();
+        Toast.makeText(DaemonService.this, "启动保活", Toast.LENGTH_SHORT).show();
         List<AccessibilityServiceInfo> list = ((AccessibilityManager) getApplicationContext().getSystemService(Context.ACCESSIBILITY_SERVICE)).getInstalledAccessibilityServiceList();
         l = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
@@ -159,7 +159,7 @@ public class daemonService extends Service {
         super.onDestroy();
         unregisterReceiver(myReceiver);
         getContentResolver().unregisterContentObserver(mContentOb);
-        Toast.makeText(daemonService.this, "停止保活", Toast.LENGTH_SHORT).show();
+        Toast.makeText(DaemonService.this, "停止保活", Toast.LENGTH_SHORT).show();
     }
 
     @Override

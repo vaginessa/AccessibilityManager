@@ -643,9 +643,9 @@ public class MainActivity extends Activity {
             startActivity(new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:" + getPackageName())));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            startForegroundService(new Intent(this, daemonService.class));
+            startForegroundService(new Intent(this, DaemonService.class));
         else
-            startService(new Intent(this, daemonService.class));
+            startService(new Intent(this, DaemonService.class));
 
     }
 
