@@ -4,7 +4,8 @@
     package="com.accessibilitymanager">
 
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -12,7 +13,8 @@
     <uses-sdk tools:overrideLibrary="rikka.shizuku.provider,rikka.shizuku.api,rikka.shizuku.shared,rikka.shizuku.aidl" />
 
     <application
-        android:icon="@mipmap/icon"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="无障碍管理器"
         android:theme="@style/AppTheme">
         <activity
@@ -22,12 +24,11 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <service
-            android:name=".DaemonService"
+            android:name=".service.DaemonService"
             android:exported="true" />
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
@@ -38,9 +39,10 @@
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
         <receiver
-            android:name=".StartReceiver"
+            android:name=".receiver.StartReceiver"
             android:directBootAware="true"
-            android:exported="true">
+            android:exported="true"
+            tools:targetApi="n">
             <intent-filter>
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
